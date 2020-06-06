@@ -1,6 +1,6 @@
 .contents.row
   .container
-    = form_with(model: @message, local: true) do |form|
+    = form_with(model: @message, url: root_path, local: true) do |form|
       %h3
         = "投稿"
         .container-form
@@ -9,6 +9,4 @@
           .container-form-text
             = form.text_area :text, placeholder: "text" , rows: "10",'data-provider': :summernote
           .container-form-submit
-            = form.submit "SEND"
-            %a.btn-real{:href => "#"}
-            %i.fa.fa-power-off
+            = form.submit "fa-power-off"
