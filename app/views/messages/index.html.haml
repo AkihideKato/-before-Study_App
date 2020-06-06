@@ -11,9 +11,7 @@
           .message-title
             = message.name
         .message-massage
-          = message.text
-          -# \.content{style: "border: solid 2px gray; padding: 10px; margin: 10px;"}
-          -# \= @book.content.html_safe
+          = message.text.html_safe
 
     .message-side
       - @messages.each do |message|
@@ -27,3 +25,4 @@
         = icon('fab', 'youtube')
       = link_to " ", class: "side__game__btn" do
         = icon('fas', 'gamepad')
+        

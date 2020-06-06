@@ -1,0 +1,52 @@
+.contents.row{
+  height: 100%;
+  width: 100vw;
+  .container{
+    height: 100vw;
+    width: 750;
+    margin: 0 auto;
+    padding-top: 75px;
+    background-color: lightgray;
+    }
+    h3{
+      width: 100%;
+      height: 100px;
+      font-size: 25px;
+      background-color: lightcoral;
+      text-align: center;;
+    }
+    .container-form{
+      height: 500px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      &-title{
+        width: 300px;
+        margin: 0 auto;
+        position: fixed;
+      }
+      &-text{
+        padding: 30px 30px;
+      }
+      &-submit{
+        display: inline-block;
+        text-decoration: none;
+        color: #FFF;
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+        background-image: linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+        transition: .4s;
+      }
+      
+      .btn-circle-fishy:hover {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+      }
+      
+    }
+
+}
