@@ -2,28 +2,23 @@
   .message-main
     .message-infomation
       .message-form
+        %span
+        .message-side
+          .side-title
       - @messages.each do |message|
-        .content_post{:style => "background-image: url(#{message.image});"}
-
+        -# .content_post{:style => "background-image: url(#{message.image});"}
         .message-header
           .message-created
             = message.created_at.strftime("%m月%d")
           .message-title
             = message.name
-        .message-massage
-          = message.text
-          -# \.content{style: "border: solid 2px gray; padding: 10px; margin: 10px;"}
-          -# \= @book.content.html_safe
+        .message-text
+          = message.text.html_safe
 
-    .message-side
-      - @messages.each do |message|
-        .side-title
-          = message.name
-
-    .side
-      = link_to " https://twitter.com/", class: "side__twitter__btn" do
+    .link
+      = link_to " https://twitter.com/", class: "link__twitter__btn" do
         = icon('fab', 'twitter')
-      = link_to " https://youtube.com/", class: "side__youtube__btn" do
+      = link_to " https://youtube.com/", class: "link__youtube__btn" do
         = icon('fab', 'youtube')
-      = link_to " ", class: "side__game__btn" do
+      = link_to " ", class: "link__game__btn" do
         = icon('fas', 'gamepad')
