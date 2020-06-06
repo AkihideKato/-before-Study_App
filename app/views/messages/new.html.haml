@@ -1,6 +1,6 @@
 .contents.row
   .container
-    = form_with(model: @message, url: root_path, local: true) do |form|
+    = form_with(model: @message, local: true) do |form|
       %h3
         = "投稿"
         .container-form
@@ -10,3 +10,5 @@
             = form.text_area :text, placeholder: "text" , rows: "10",'data-provider': :summernote
           .container-form-submit
             = form.submit "fa-power-off"
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+
