@@ -2,20 +2,33 @@
   .message-main
     .message-infomation
       .message-form
-        %span
+        = "Top Main"
         .message-side
           .side-title
-      - @messages.each do |message|
-        -# .content_post{:style => "background-image: url(#{message.image});"}
-        .message-header
-          .message-created
-            = message.created_at.strftime("%m月%d")
-          .message-title
-            = message.name
-        .message-text
-          = message.text.html_safe
-          = current_user
+            = "今日の天気"
+            %div
+              %span#weather.bold
+            %div
+              %span#weatherMark.bold
+            %p#icon
+            %div
+              気温
+              %span#temp.bold>
+              ℃
+            %div
+              降水確率
+              %span#humidity.bold>
 
+        - @messages.each do |message|
+          .message-header
+            .message-created
+              = message.created_at.strftime("%m月%d")
+            .message-title
+              = message.name
+          .message-text
+            = message.text.html_safe
+            = current_user
+           
     .link
       = link_to " https://twitter.com/", class: "link__twitter__btn" do
         = icon('fab', 'twitter')
@@ -23,3 +36,5 @@
         = icon('fab', 'youtube')
       = link_to "messages/index.html", class: "link__game__btn" do
         = icon('fas', 'gamepad')
+
+        -# .content_post{:style => "background-image: url(#{message.image});"}
