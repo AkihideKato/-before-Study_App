@@ -14,6 +14,7 @@
             = message.name
         .message-text
           = message.text.html_safe
+          = @users.name
 
     .link
       = link_to " https://twitter.com/", class: "link__twitter__btn" do
