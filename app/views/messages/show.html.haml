@@ -1,0 +1,11 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @book.title
+%p
+  %strong Content:
+  .content{style: "border: solid 2px gray; padding: 10px; margin: 10px;"}
+    = @book.content.html_safe
+= link_to 'Edit', edit_book_path(@book)
+|
+= link_to 'Back', books_path
