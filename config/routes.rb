@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :messages do
     resources :likes, only: [:create, :destroy]
   end
-  root to: "message#index"
+  root to: "messages#index"
 
 end

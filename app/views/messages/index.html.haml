@@ -11,14 +11,13 @@
             %div
               %span#weatherMark.bold
             %p#icon
-            %div
               気温
               %span#temp.bold>
               ℃
-            %div
+              %br/
               降水確率
               %span#humidity.bold>
-            
+              ％
 
         - @messages.each do |message|
           .message-header
@@ -28,23 +27,22 @@
               = message.title
           .message-text
             = message.text.html_safe
-            = current_user
-            - if user_signed_in?
-              - if message.like_user(current_user.id)
-                = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
-                  = icon('fas', 'hand-peace')
-                  %span
-                    = message.likes_count
+            .message-name
+              - if user_signed_in?
+                = current_user.name
+                .message-like
+                - if message.like_user(current_user.id)
+                  = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
+                    = icon('fas', 'check',)
+                    = "復習済"
+
+                    -# = message.likes_count
+                - else
+                  = button_to message_likes_path(message), id: "like-button", remote: true do
+                    = icon('fas', 'exclamation-triangle')
+                    = "再復習"
               - else
-                = button_to message_likes_path(message), id: "like-button", remote: true do
-                  = icon('fas', 'hand-peace')
-                  %span
-                    = message.likes_count
-            - else
-              -# = "a"
-              -# - = image_tag("icon_heart.svg")
-              = icon('fas', 'hand-peace')
-              %span
+                = icon('fas', 'hand-peace')
                 = message.likes_count
 
 -# - if user_signed_in?
