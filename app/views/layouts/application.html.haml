@@ -16,8 +16,15 @@
         = link_to "/messages/new", class: "header-pen" do
           = icon('fas', 'pen  ')
       .header-right
+        = link_to " https://twitter.com/", class: "link__twitter__btn" do
+          = icon('fab', 'twitter')
+        = link_to " https://youtube.com/", class: "link__youtube__btn" do
+          = icon('fab', 'youtube')
+        = link_to "messages/index.html", class: "link__game__btn" do
+          = icon('fas', 'gamepad')
         = link_to "#", class: "header-btn" do
           = icon('fas', 'bars  ')
+
   %body
   
     = yield
