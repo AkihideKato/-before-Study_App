@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :text, null: false
       t.text :image
+      t.integer :likes_count
       t.timestamps
     end
   end

@@ -12,13 +12,38 @@
     .header
       .header-left
         = link_to "/messages", class: "header-home" do
-          = icon('fas', 'home  ')
+          = icon('fas', 'home')
         = link_to "/messages/new", class: "header-pen" do
-          = icon('fas', 'pen  ')
+          = icon('fas', 'pen')
+      .header-left-user
+        - if user_signed_in?
+          = current_user.name
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+          = link_to  "投稿する", "/tweets/new", class: "post"
+        - else
+          = link_to "ログイン", new_user_session_path, class: 'post'
+          = link_to "新規登録", new_user_registration_path, class: 'post'
+
+      -# - if user_signed_in?
+      -#   = current_user.name
+      -# = link_to "ログアウト", destroy_user_session_path, method: :delete
+      -#   = icon('fas', 'sign-out-alt')
+      -# - else
+      -# = link_to "ログイン", new_user_session_path, class: 'post'
+      -#   = icon('fas', 'sign-in-alt')
+      -# = link_to "新規登録", new_user_registration_path, class: 'post'
+      -#   = icon('fas', 'file-alt')
+          
+        -# = link_to "マイページ", "/messages/#{current_user.id}"
+
       .header-right
-        = link_to "#", class: "header-btn" do
+        = link_to " https://twitter.com/", class: "header-twitter" do
+          = icon('fab', 'twitter')
+        = link_to " https://youtube.com/", class: "header-youtube" do
+          = icon('fab', 'youtube')
+        = link_to "messages/index.html", class: "header-game" do
+          = icon('fas', 'gamepad')
+        = link_to "#", class: "header-bars" do
           = icon('fas', 'bars  ')
   %body
-  
     = yield
-    
