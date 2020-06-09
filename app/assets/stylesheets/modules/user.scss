@@ -1,0 +1,44 @@
+.account-page.account-page{
+  height: 100vh;
+  width: 100%;
+  // background-color: red;
+  .account-page__inner.clearfix{
+    height: 100%;
+    width: 75%;
+    // background-color: green;
+    margin: 0 auto;
+  
+    h5{
+      height: 50px;
+      width: 100%;
+      font-size: 2em;
+      background-color: #F5F5F5;
+      padding: 100px;
+    }
+    .field{
+      width: 100%;
+      height: 75px;
+      // background-color: yellow;
+      display: flex;
+      padding-left: 100px;
+
+      // justify-content: space-evenly;
+      &-label{
+        height: 50px;
+        width: 300px;
+        // background-color: red;
+      }
+      &-input{
+        height: 50px;
+        width: 200px;
+        // background-color: green;
+      }
+    }
+    .actions{
+      height: 100px;
+      width: 100%;
+      background-color: red;
+      text-align: center;
+    }
+  }
+}
