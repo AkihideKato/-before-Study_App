@@ -5,7 +5,7 @@
 @mixin icon-link{
   margin: 0px 7px;
   font-size: 20px;
-  display: inline-block
+  display: inline-block;
 }
 
 .header{
@@ -51,6 +51,7 @@
 .message-top{
   height: 100%;
   width: 100%;
+  
   .message-infomation{
     margin-left: 40px;
     .message-form{

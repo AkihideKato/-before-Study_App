@@ -1,7 +1,8 @@
 .account-page.account-page{
   height: 100vh;
   width: 100%;
-  // background-color: red;
+  background-color: #333333;
+  padding-top: 50px;
   .account-page__inner.clearfix{
     height: 100%;
     width: 75%;
@@ -12,8 +13,10 @@
       height: 50px;
       width: 100%;
       font-size: 2em;
-      background-color: #F5F5F5;
+      // background-color: #F5F5F;
       padding: 100px;
+      color: white;
+      
     }
     .field{
       width: 100%;
@@ -21,6 +24,7 @@
       // background-color: yellow;
       display: flex;
       padding-left: 100px;
+      color: white;
 
       // justify-content: space-evenly;
       &-label{
@@ -35,10 +39,18 @@
       }
     }
     .actions{
-      height: 100px;
-      width: 100%;
-      background-color: red;
+      height: 50px;
+      width: 100px;
+      // background-color: red;
+      margin: 0 auto;
       text-align: center;
+      margin-top: 30px;
+      .btn{
+        height: 50px;
+        width: 100px;
+        background-color: cadetblue;
+        color: white;
+      }
     }
   }
 }
