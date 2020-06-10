@@ -17,9 +17,9 @@
           = icon('fas', 'pen')
       .header-left-user
         - if user_signed_in?
+          name:
           = current_user.name
           = link_to "ログアウト", destroy_user_session_path, method: :delete
-          = link_to  "投稿する", "/tweets/new", class: "post"
         - else
           = link_to "ログイン", new_user_session_path, class: 'post'
           = link_to "新規登録", new_user_registration_path, class: 'post'
