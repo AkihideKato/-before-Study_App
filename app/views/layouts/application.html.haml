@@ -10,19 +10,14 @@
     %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.8.2/css/all.css", :integrity => "sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay", :rel => "stylesheet"}/
   %header
     .header
-      .header-left
-        = link_to "/messages", class: "header-home" do
-          = icon('fas', 'home')
-        = link_to "/messages/new", class: "header-pen" do
-          = icon('fas', 'pen')
-      .header-left-user
-        - if user_signed_in?
-          name:
-          = current_user.name
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-        - else
-          = link_to "ログイン", new_user_session_path, class: 'post'
-          = link_to "新規登録", new_user_registration_path, class: 'post'
+      .header-top
+        .header-left
+          = "Study App"
+          = link_to "/messages", class: "header-home" do
+            = icon('fas', 'home')
+          = link_to "/messages/new", class: "header-pen" do
+            = icon('fas', 'pen')
+     
 
       -# - if user_signed_in?
       -#   = current_user.name
@@ -35,16 +30,26 @@
       -#   = icon('fas', 'file-alt')
           
         -# = link_to "マイページ", "/messages/#{current_user.id}"
-
-      .header-right
-        = link_to " https://twitter.com/", class: "header-twitter" do
-          = icon('fab', 'twitter')
-        = link_to " https://youtube.com/", class: "header-youtube" do
-          = icon('fab', 'youtube')
-        = link_to "messages/index.html", class: "header-game" do
-          = icon('fas', 'gamepad')
-        = link_to "#", class: "header-bars" do
-          = icon('fas', 'bars  ')
+      .header-top
+        .header-left-user
+          - if user_signed_in?
+            = "name:"
+            = current_user.name
+            = link_to  "/users/sign_out", method: :delete, class: 'post-logout' do
+              = icon('fas', 'sign-out-alt', "ログアウト")
+          - else
+            = link_to "/users/sign_in", class: 'post-login' do
+              = icon('fas', 'sign-in-alt', "ログイン")
+            = link_to "/users/sign_up", class: 'post-new' do
+              = icon('fas', 'file-alt', "新規登録")
+          = link_to " https://twitter.com/", class: "header-twitter" do
+            = icon('fab', 'twitter')
+          = link_to " https://youtube.com/", class: "header-youtube" do
+            = icon('fab', 'youtube')
+          = link_to "messages/index.html", class: "header-game" do
+            = icon('fas', 'gamepad')
+          = link_to "#", class: "header-bars" do
+            = icon('fas', 'bars')
   %body
     = yield
     = render 'layouts/notifications'

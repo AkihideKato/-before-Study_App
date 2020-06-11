@@ -17,11 +17,11 @@
   opacity: 0.7;
   font-size: 30px;
   padding-left: 10px;
-  margin-bottom: 50px;
   border-bottom: solid 0.5px;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
   background-color: black;
   color: white;
+
   
   &-home{
     display: inline-block;
@@ -45,12 +45,36 @@
     color: green;
     @include icon-link;
   }
-  
+  &-left-user{
+    font-size: 20px;
+    padding: 10px 0;
+
+    .post-logout{
+      color: red;
+      text-decoration: none;
+      padding-right: 10px;
+
+    }
+    .post-new{
+      color: lightblue;
+      text-decoration: none;
+      padding-right: 10px;
+
+    }
+    .post-login{
+      color: white;
+      text-decoration: none;
+      padding-right: 10px;
+
+    }
+
+  }
 }
 
 .message-top{
   height: 100%;
   width: 100%;
+  // padding-top: 100px;
   
   .message-infomation{
     margin-left: 40px;
@@ -59,9 +83,10 @@
       width: 100%;
       margin-right: 10px;
       margin-left: 10px;
-      font-size: 30px;
+      font-size: 35px;
       font-family: Comic Sans MS;
       text-align: center;
+      color: blue;
       .message-header{
         display: flex;
         font-family: Comic Sans MS;
@@ -70,7 +95,7 @@
         color: #5d627b;
         border-top: solid 5px #5d627b;
         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
-        margin-top: 30px;
+        // margin-top: 30px;
         margin-left: 10px;
         .message-created{
           font-size: 15px;
@@ -109,6 +134,7 @@
       font-size: 15px;
       border-radius: 80px 80px 80px 80px;
       background-color: lightblue;
+      color: black;
       }
     }
   }
