@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :messages
-  # root to: "message#index"
-  root "messages#index"
+  devise_for :users
+  resources :messages do
+    resources :likes, only: [:create, :destroy]
+  end
+  root to: "messages#index"
 
 end

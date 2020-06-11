@@ -1,0 +1,124 @@
+@mixin icon-style{
+  margin: 0px 20px;
+  color: white;
+}
+@mixin icon-link{
+  margin: 0px 7px;
+  font-size: 20px;
+  display: inline-block;
+}
+
+.header{
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.7;
+  font-size: 30px;
+  padding-left: 10px;
+  margin-bottom: 50px;
+  border-bottom: solid 0.5px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
+  background-color: black;
+  color: white;
+  
+  &-home{
+    display: inline-block;
+    @include icon-style;
+  }
+  &-pen{
+    @include icon-style
+  }
+  &-bars{
+    @include icon-style
+  }
+  &-twitter{
+    color: #00aced;
+    @include icon-link;
+  }
+  &-youtube{
+    color:red;
+    @include icon-link;
+  }
+  &-game{
+    color: green;
+    @include icon-link;
+  }
+  
+}
+
+.message-top{
+  height: 100%;
+  width: 100%;
+  
+  .message-infomation{
+    margin-left: 40px;
+    .message-form{
+      height: 50px;
+      width: 100%;
+      margin-right: 10px;
+      margin-left: 10px;
+      font-size: 30px;
+      font-family: Comic Sans MS;
+      text-align: center;
+      .message-header{
+        display: flex;
+        font-family: Comic Sans MS;
+        height: 40px;
+        width: 200px;
+        color: #5d627b;
+        border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
+        margin-top: 30px;
+        margin-left: 10px;
+        .message-created{
+          font-size: 15px;
+          color: silver;
+          font-family: Comic Sans MS;
+        }
+        .message-title{
+          font-size: 15px;
+          padding-left: 50px;
+          font-family: Comic Sans MS;
+          margin-bottom: 40px;
+        }
+      }
+      .message-text{
+        height: 500px;
+        width: 750px;
+        font-size: 25px;
+        font-family: Comic Sans MS;
+        margin: 30px 0;
+        margin-bottom: 40px;
+        transition: all 0.8s;
+        transition-duration: 0.5s; /*変化の時間*/
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
+        border-radius: 10px 10px;
+        color: #232323;
+        border-left: solid 10px gray;
+        border-right: solid 10px gray;
+      }
+    .message-side{
+      height: 175px;
+      width: 175px;
+      position: fixed;
+      margin-top: 20px;
+      margin-left: 70%;
+      padding-top: 10px;
+      font-size: 15px;
+      border-radius: 80px 80px 80px 80px;
+      background-color: lightblue;
+      }
+    }
+  }
+}
+  .link{
+    // height: 120px;
+    // width: 40px;
+    // position: fixed;
+    // margin-top: 50px;
+    // margin-left: 10px;
+    // opacity: 0.8;
+    
+  }

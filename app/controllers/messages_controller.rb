@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @messages = Message.all.order(created_at: :desc)
   end
   def new
     @message = Message.new
@@ -12,6 +12,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:name, :image, :text)
+    params.require(:message).permit(:title, :image, :text)
   end
 end

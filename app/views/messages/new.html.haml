@@ -5,32 +5,12 @@
         = "投稿"
         .container-form
           .container-form-title
-            = form.text_field :name, placeholder: "題名"
+            = form.text_field :title, placeholder: "title"
           .container-form-text
             = form.text_area :text, placeholder: "text" , rows: "10",'data-provider': :summernote
           .container-form-submit
-            = form.submit "SEND"
-  -# %div#summernote
-  -# :javascript
-  -#   $(function () {
-  -#     $('[data-provider="summernote"]').each(function(){
-  -#       $(this).summernote({
-  -#         lang: 'ja-JP',
-  -#         height: 50%,
-  -#         fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-  -#         fontNamesIgnoreCheck: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-  -#       });
-  -#     })
-  -#   })
+            = form.submit "fa-power-off"
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+            = link_to "ログイン", new_user_session_path, method: :get, class: 'btn'
+            = link_to "新規", user_session_path, method: :post, class: 'btn'
 
--# <%= simple_form_for :example do | f | %>
--#   ...これを挿入
--#   <%= f.input :text, as: :summernote %>
--#   ...
--# <% end %>
--# = form_for(post) do |form|
--#   ・・・
--#   .field
--#     = form.label :text
--#     = form.text_area :text, 'data-provider': :summernote
-  ・・・

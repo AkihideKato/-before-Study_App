@@ -1,0 +1,42 @@
+.contents.row{
+  height: 100%;
+  width: 100vw;
+  .container{
+    height: 100%;
+    width: 750;
+    margin: 0 auto;
+    padding-top: 100px;
+    }
+    h3{
+      height: 100px;
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      font-family: Comic Sans MS;
+    }
+    .container-form{
+      height: 500px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      &-title{
+        width: 300px;
+        text-align: center;
+        margin: 0 auto;
+        input[type="text"]{
+          height: 30px;
+          margin-top: 10px;
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+      &-text{
+        padding: 30px 30px;
+      }
+      &-submit{
+        width: 100%;
+        margin: 0 auto;
+        font-size: 30px;
+      }
+    }
+}

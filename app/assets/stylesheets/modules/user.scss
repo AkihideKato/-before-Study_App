@@ -1,0 +1,56 @@
+.account-page.account-page{
+  height: 100vh;
+  width: 100%;
+  background-color: #333333;
+  padding-top: 50px;
+  .account-page__inner.clearfix{
+    height: 100%;
+    width: 75%;
+    // background-color: green;
+    margin: 0 auto;
+  
+    h5{
+      height: 50px;
+      width: 100%;
+      font-size: 2em;
+      // background-color: #F5F5F;
+      padding: 100px;
+      color: white;
+      
+    }
+    .field{
+      width: 100%;
+      height: 75px;
+      // background-color: yellow;
+      display: flex;
+      padding-left: 100px;
+      color: white;
+
+      // justify-content: space-evenly;
+      &-label{
+        height: 50px;
+        width: 300px;
+        // background-color: red;
+      }
+      &-input{
+        height: 50px;
+        width: 200px;
+        // background-color: green;
+      }
+    }
+    .actions{
+      height: 50px;
+      width: 100px;
+      // background-color: red;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 30px;
+      .btn{
+        height: 50px;
+        width: 100px;
+        background-color: cadetblue;
+        color: white;
+      }
+    }
+  }
+}
