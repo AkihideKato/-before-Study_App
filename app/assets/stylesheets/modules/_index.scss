@@ -68,6 +68,7 @@
 .message-top{
   height: 100%;
   width: 100%;
+  
   .message-infomation{
     margin-left: 40px;
     .message-form{
@@ -88,6 +89,7 @@
         border-top: solid 5px #5d627b;
         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
         margin-left: 10px;
+        
         .message-created{
           font-size: 15px;
           color: silver;
@@ -114,8 +116,11 @@
         color: #232323;
         border-left: solid 10px gray;
         border-right: solid 10px gray;
+        background-color: #DDDDDD;
+
       }
       .message-naem{
+        
         
       }
     .message-side{

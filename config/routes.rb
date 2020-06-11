@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   end
   root to: "messages#index"
   resources :users, only: [:edit, :update]
+  
+  post '/messages/:message_id/likes' => "likes#create"
+  delete '/messages/:message_id/likes' => "likes#destroy"
+
 
   devise_scope :user do
     get 'user_edit', to: 'users/registrations#user_edit', as: 'user_edit'

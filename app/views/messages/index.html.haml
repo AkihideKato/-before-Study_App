@@ -18,7 +18,6 @@
               降水確率
               %span#humidity.bold>
               ％
-
         - @messages.each do |message|
           .message-header
             .message-created
@@ -31,18 +30,20 @@
               - if user_signed_in?
                 = current_user.name
                 .message-like
-                - if message.like_user(current_user.id)
-                  = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
-                    = icon('fas', 'check',)
-                    = "復習済"
-                    -# = message.likes_count
-                - else
-                  = button_to message_likes_path(message), id: "like-button", remote: true do
-                    = icon('fas', 'exclamation-triangle')
-                    = "再復習"
-              - else
-                = icon('fas', 'hand-peace')
-                = message.likes_count
+                  = render partial: "like", locals: { message: message }
+
+              -#   - if message.like_user(current_user.id)
+              -#     = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
+              -#       = icon('fas', 'check',)
+              -#       = "復習済"
+              -#       -# = message.likes_count
+              -#   - else
+              -#     = button_to message_likes_path(message), id: "like-button", remote: true do
+              -#       = icon('fas', 'exclamation-triangle')
+              -#       = "再復習"
+              -# - else
+              -#   = icon('fas', 'hand-peace')
+              -#   = message.likes_count
 -# - if user_signed_in?
 -# - if messages.like_user(current_user.id)
 -# = button_to messages_like_path(like, message_id: message.id), method: :delete, id: "like-button", remote: true do
