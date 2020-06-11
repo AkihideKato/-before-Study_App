@@ -52,19 +52,19 @@
     .post-logout{
       color: red;
       text-decoration: none;
-      padding-right: 10px;
+      padding: 0 15px;
 
     }
     .post-new{
       color: lightblue;
       text-decoration: none;
-      padding-right: 10px;
+      padding: 0 10px;
 
     }
     .post-login{
       color: white;
       text-decoration: none;
-      padding-right: 10px;
+      padding: 0 10px;
 
     }
 
@@ -124,13 +124,16 @@
         border-left: solid 10px gray;
         border-right: solid 10px gray;
       }
+      .message-naem{
+        
+      }
     .message-side{
       height: 175px;
       width: 175px;
       position: fixed;
-      margin-top: 20px;
+      margin-top: 40px;
       margin-left: 70%;
-      padding-top: 10px;
+      padding-top: 20px;
       font-size: 15px;
       border-radius: 80px 80px 80px 80px;
       background-color: lightblue;
