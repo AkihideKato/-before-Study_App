@@ -2,49 +2,55 @@
   height: 100vh;
   width: 100%;
   background-color: #333333;
-  padding-top: 50px;
+  padding-top: 100px;
   .account-page__inner.clearfix{
     height: 100%;
     width: 75%;
-    // background-color: green;
     margin: 0 auto;
-  
+    h4{
+      color: red;
+      height: 50px;
+      width: 100%;
+      font-size: 2em;
+      padding: 30px 0;
+      margin-left: 100px;
+    }
     h5{
       height: 50px;
       width: 100%;
       font-size: 2em;
-      // background-color: #F5F5F;
-      padding: 100px;
+      padding: 30px 0;
       color: white;
-      
+      margin-left: 100px;
+    }
+    #error_explanation{
+      font-size: 15px;
+      width: 500px;
+      margin-left: 100px;
+      margin-top: 30px;
     }
     .field{
       width: 100%;
       height: 75px;
-      // background-color: yellow;
       display: flex;
       padding-left: 100px;
       color: white;
-
-      // justify-content: space-evenly;
+      padding-top: 50px;
       &-label{
         height: 50px;
         width: 300px;
-        // background-color: red;
       }
       &-input{
         height: 50px;
         width: 200px;
-        // background-color: green;
       }
     }
     .actions{
       height: 50px;
       width: 100px;
-      // background-color: red;
       margin: 0 auto;
       text-align: center;
-      margin-top: 30px;
+      margin-top: 50px;
       .btn{
         height: 50px;
         width: 100px;

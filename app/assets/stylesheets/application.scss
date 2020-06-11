@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "reset";
+@import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/index";
@@ -21,4 +22,5 @@
 @import "summernote-bs4";
 @import "modules/new";
 @import "modules/user";
+@import "modules/flash";
 // @import "summernote-custom-theme.min"

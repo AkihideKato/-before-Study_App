@@ -9,8 +9,5 @@
           .container-form-text
             = form.text_area :text, placeholder: "text" , rows: "10",'data-provider': :summernote
           .container-form-submit
-            = form.submit "fa-power-off"
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
-            = link_to "ログイン", new_user_session_path, method: :get, class: 'btn'
-            = link_to "新規", user_session_path, method: :post, class: 'btn'
+            = form.submit "投稿"
 

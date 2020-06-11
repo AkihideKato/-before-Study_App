@@ -1,0 +1,13 @@
+- if user_signed_in?
+  - if message.like_user(current_user.id)
+    = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
+      = icon('fas', 'check',)
+      = "復習済"
+      -# = message.likes_count
+  - else
+    = button_to message_likes_path(message), id: "like-button", remote: true do
+      = icon('fas', 'exclamation-triangle')
+      = "再復習"
+- else
+  = icon('fas', 'hand-peace')
+  -# = message.likes_count

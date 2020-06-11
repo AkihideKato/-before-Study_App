@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
   
   def create
     Message.create(message_params)
+    redirect_to root_path, notice: 'メッセージを投稿しました'
   end
 
   private
