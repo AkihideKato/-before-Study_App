@@ -5,4 +5,10 @@ Rails.application.routes.draw do
   end
   root to: "messages#index"
   resources :users, only: [:edit, :update]
+
+  devise_scope :user do
+    get 'user_edit', to: 'users/registrations#user_edit', as: 'user_edit'
+    patch 'user_update', to: 'users/registrations#user_update', as: 'user_update'
+  end
+
 end
