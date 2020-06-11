@@ -1,24 +1,24 @@
-# README
+# Project Title
+Rails 投稿機能付きの自分用学習アプリ -Study_App-
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## 開発環境
+Ruby on Rails
+VSCode
+Github
 
-* Ruby version
+## アプリの機能
 
-* System dependencies
+## 機能
 
-* Configuration
+## 導入
 
-* Database creation
+$ git clone https://github.com/AkihideKato/Study_App
+$ cd Study_App
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails s
+👉 http://localhost:3000
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
