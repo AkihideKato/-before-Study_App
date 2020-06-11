@@ -31,6 +31,7 @@
                 = current_user.name
                 .message-like
                   = render partial: "like", locals: { message: message }
+                 
 
               -#   - if message.like_user(current_user.id)
               -#     = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do

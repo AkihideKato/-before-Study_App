@@ -4,6 +4,7 @@ $(document).ready(function() {
           $("#weather").html(json.weather[0].description);
           $("#humidity").html(json.main.humidity);
           $("#temp").html(Math.round(json.main.temp));
+          
           switch (json.weather[0].main){
           case 'Clouds':
           $("#weatherMark").html("<img src='http://openweathermap.org/img/w/04d.png' >");
@@ -29,6 +30,7 @@ $(document).ready(function() {
           default:
           $("#weatherMark").html("<img src='http://openweathermap.org/img/w/01n.png' >");
         }
+        // setTimeout("location.reload()",10000);
     }
   );
 });

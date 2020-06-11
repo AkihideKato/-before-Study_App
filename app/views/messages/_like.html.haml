@@ -20,5 +20,6 @@
 - else
   = link_to "/messages/#{message.id}/likes", method: :post, remote: true do
     = icon('fas', 'exclamation-triangle')
-  = message.likes.length
+
+  -# = message.likes.length
 
