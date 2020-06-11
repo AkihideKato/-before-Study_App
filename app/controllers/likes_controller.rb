@@ -20,7 +20,7 @@ class LikesController < ApplicationController
   # def like_params
   #   @messages = Message.find(params[:message_id])
   # end
-  before_action :set_dream
+  before_action :set_like
 
   def create
     @like = Like.create(user_id: current_user.id, message_id: @message.id)
@@ -42,7 +42,7 @@ class LikesController < ApplicationController
   end
 
   private
-  def set_dream
+  def set_like
     @message = Message.find(params[:message_id])
   end
 
