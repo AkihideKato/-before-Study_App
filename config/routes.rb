@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   
   post '/messages/:message_id/likes' => "likes#create"
   delete '/messages/:message_id/likes' => "likes#destroy"
+  
 
 
   devise_scope :user do
