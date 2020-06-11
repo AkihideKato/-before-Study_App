@@ -22,7 +22,6 @@
   background-color: black;
   color: white;
 
-  
   &-home{
     display: inline-block;
     @include icon-style;
@@ -48,34 +47,27 @@
   &-left-user{
     font-size: 20px;
     padding: 10px 0;
-
     .post-logout{
       color: red;
       text-decoration: none;
       padding: 0 15px;
-
     }
     .post-new{
       color: lightblue;
       text-decoration: none;
       padding: 0 10px;
-
     }
     .post-login{
       color: white;
       text-decoration: none;
       padding: 0 10px;
-
     }
-
   }
 }
 
 .message-top{
   height: 100%;
   width: 100%;
-  // padding-top: 100px;
-  
   .message-infomation{
     margin-left: 40px;
     .message-form{
@@ -95,7 +87,6 @@
         color: #5d627b;
         border-top: solid 5px #5d627b;
         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
-        // margin-top: 30px;
         margin-left: 10px;
         .message-created{
           font-size: 15px;
@@ -142,12 +133,3 @@
     }
   }
 }
-  .link{
-    // height: 120px;
-    // width: 40px;
-    // position: fixed;
-    // margin-top: 50px;
-    // margin-left: 10px;
-    // opacity: 0.8;
-    
-  }

@@ -4,11 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
   end
 
-  def update
-    current_user.update(user_params)
-  end
-
-
   def user_update
     current_user.assign_attributes(account_update_params)
     if current_user.save
@@ -18,15 +13,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email)
+  end
+  
   protected
   
   def configure_account_update_params
    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email)
-  end
 end

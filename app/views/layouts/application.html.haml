@@ -34,7 +34,7 @@
         .header-left-user
           - if user_signed_in?
             = "name:"
-            = current_user.name
+            = link_to "#{current_user.name}さん", edit_user_registration_path(current_user.id)
             = link_to  "/users/sign_out", method: :delete, class: 'post-logout' do
               = icon('fas', 'sign-out-alt', "ログアウト")
           - else

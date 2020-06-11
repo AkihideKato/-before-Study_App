@@ -14,8 +14,6 @@ module StudyApp
     I18n.enforce_available_locales = false
     I18n.config.available_locales = :ja
     I18n.default_locale = :ja
-    
-
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
