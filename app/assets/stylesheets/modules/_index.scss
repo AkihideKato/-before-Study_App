@@ -51,7 +51,7 @@
     font-size: 20px;
     padding: 10px 0;
     .post-name{
-      text-decoration: none;
+      @include user-btn;
     }
     .post-logout{
       color: red;
@@ -70,7 +70,7 @@
 .message-top{
   height: 100%;
   width: 100%;
-  padding-top: 75px;
+  // padding-top: 75px;
   .message-infomation{
     margin-left: 40px;
     .message-form{
@@ -83,6 +83,7 @@
       text-align: center;
       .message-header{
         display: flex;
+        margin: 20px 0;
         // justify-content: start;
         font-family: Comic Sans MS;
         height: 40px;
@@ -128,17 +129,11 @@
         background-color: #DDDDDD;
       }
       .message-like{
+        width: 650px;
         display: flex;
-        padding: 15px 15px;
-        // font-size: 20px;
-        // padding: 0.5em 1em;
-        // padding-bottom: 10px;
-        // margin-bottom: 10px;
-        // color: #2c2c2f;
-        // background: black;/*背景色*/
-        // border-radius: 10px 10px;
-
-        // padding-top: 10px;
+        justify-content: space-between;
+        padding-top: 15px;
+        padding-left: 15px;
         .like-check{
           height: 30px;
           width: 75px;
@@ -146,9 +141,8 @@
           color: white;
           text-decoration: none;
           border-radius: 10px 10px;
+          padding-top: 3px;
           background-color: #00BFFF;
-          text-align: center;
-
         }
         .like-exclamation{
           height: 30px;
@@ -157,13 +151,17 @@
           color: white;
           text-decoration: none;
           border-radius: 10px 10px;
+          padding-top: 3px;
           background-color: #FF4F50;
-
         }
       }
       .message-edit{
-        color: green;
+        font-size: 15px;
+        color: red;
         text-decoration: none;
+        padding-top: 370px;
+        padding-right: 10px;
+        // padding-bottom: 50px;
       }
       .message-name{
         // font-size: 10px;

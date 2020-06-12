@@ -25,8 +25,9 @@
               = message.title
           .message-header-right
             .message-like
-              = render partial: "like", locals: { message: message }
-              = link_to "編集", edit_message_path(message.id), class: 'message-edit'
+              - if user_signed_in?
+                = render partial: "like", locals: { message: message }
+                = link_to "編集", edit_message_path(message.id), class: 'message-edit',data: { confirm: "編集しますか？"}
             .message-name
               - if user_signed_in?
           .message-text

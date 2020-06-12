@@ -1,7 +1,8 @@
 .notification {
+  padding-top: 50px;
   .notice {
-    background-color: lightblue;
-    color: black;
+    background-color: black;
+    color: white;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -10,6 +11,7 @@
     background-color: orange;
     color: black;
     text-align: center;
-    font-weight: bold
+    font-weight: bold;
+    margin: auto;
   }
 }

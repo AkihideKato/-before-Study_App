@@ -51,5 +51,5 @@
           = link_to "#", class: "header-bars" do
             = icon('fas', 'bars')
   %body
+    = render 'layouts/notifications', class: 'notifications'
     = yield
-    = render 'layouts/notifications'
