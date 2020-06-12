@@ -1,0 +1,52 @@
+//.shwo-top
+// .show-header
+//   .show-created
+//     = @message.created_at.strftime("%m月%d")
+//   .show-title
+//     = @message.title
+// .show-header-right
+// .show-text
+.show{
+  // height: 100vh;
+  // width: 100%;
+  // background-color: red;
+  &-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-family: Comic Sans MS;
+    height: 50px;
+    width: 300px;
+    color: #5d627b;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
+    overflow: scroll;
+  }
+    &-created{
+      color: silver;
+      padding: 5px;
+    }
+    &-title{
+      color: black;
+      padding: 5px;
+    }
+    &-text{
+      height: 500px;
+      width: 750px;
+      font-size: 25px;
+      font-family: Comic Sans MS;
+      overflow: scroll;
+      transition: all 10s;
+      transition-duration: 0.5s;
+      box-shadow: 0 5px 7px rgba(0, 0, 0, 0.22);
+      border-radius: 10px 10px;
+      border-left: solid 10px gray;
+      border-right: solid 10px gray;
+      color: #232323;
+      background-color: #DDDDDD;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+  
+}

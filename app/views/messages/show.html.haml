@@ -1,0 +1,10 @@
+.show
+  .show-header
+    .show-created
+      = @message.created_at.strftime("%m月%d")
+    .show-title
+      = @message.title
+  .show-header-right
+    .show-text
+      = @message.text.html_safe
+-# = @show.text.html_safe

@@ -11,6 +11,10 @@ class MessagesController < ApplicationController
     redirect_to root_path, notice: 'メッセージを投稿しました'
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   def edit
     @message = Message.find(params[:id])
   end
