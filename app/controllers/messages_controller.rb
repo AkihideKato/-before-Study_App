@@ -11,6 +11,10 @@ class MessagesController < ApplicationController
     redirect_to root_path, notice: 'メッセージを投稿しました'
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   def edit
     @message = Message.find(params[:id])
   end
@@ -18,9 +22,14 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
     @message.update(message_params)
-    redirect_to root_path(@message), notice: 'メッセージを編集しました'
+    redirect_to root_path(@message)
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to root_path(@messge), notice: 'メッセージを削除しました'
+  end
 
   private
   def message_params

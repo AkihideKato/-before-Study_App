@@ -1,56 +1,56 @@
-.message-top
+.message
   .message-main
-    .message-infomation
-      .message-form
-        .message-side
-          .side-title
-            = "今日の天気"
-            %div
-              %span#weather.bold
-            %div
-              %span#weatherMark.bold
-            %p#icon
-              気温
-              %span#temp.bold>
-              ℃
-              %br/
-              降水確率
-              %span#humidity.bold>
-              ％
-        - @messages.each do |message|
-          .message-header
-            .message-created
-              = message.created_at.strftime("%m月%d")
-            .message-title
-              = message.title
-          .message-header-right
-            .message-like
-              - if user_signed_in?
-                = render partial: "like", locals: { message: message }
-                = link_to "編集", edit_message_path(message.id), class: 'message-edit',data: { confirm: "編集しますか？"}
-            .message-name
-              - if user_signed_in?
-          .message-text
-            = message.text.html_safe
-              -# = current_user.name
-                
+    .message-form
+      .message-side
+        .side-title
+          = "今日の天気"
+          #weather.bold
+          #weatherMark.bold
+          #icon
+            気温
+            %span#temp.bold>
+            ℃
+            %br/
+            降水確率
+            %span#humidity.bold>
+            ％
+      - @messages.each do |message|
+        .message-header
+          .message-created
+            = message.created_at.strftime("%m月%d")
+          .message-title
+            = message.title
+        .message-header-left
+          .message-like
+            - if user_signed_in?
+              = render partial: "like", locals: { message: message }
+              = link_to "編集", edit_message_path(message.id), class: 'message-edit'
+              = link_to '詳細', "/messages/#{message.id}", method: :get, class: 'message-show'
+              = link_to '削除', message_path(message.id), method: :delete,class: 'message-delete', data: { confirm: "削除しますか？"}
+          .message-name
+            - if user_signed_in?
+        .message-text
+          = message.text.html_safe
+          
+            
+              
+              
 
 
 
-                 
-
-              -#   - if message.like_user(current_user.id)
-              -#     = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
-              -#       = icon('fas', 'check',)
-              -#       = "復習済"
-              -#       -# = message.likes_count
-              -#   - else
-              -#     = button_to message_likes_path(message), id: "like-button", remote: true do
-              -#       = icon('fas', 'exclamation-triangle')
-              -#       = "再復習"
-              -# - else
-              -#   = icon('fas', 'hand-peace')
-              -#   = message.likes_count
+            -# = current_user.name
+            -#   - if message.like_user(current_user.id)
+            -#     = button_to message_like_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
+            -#       = icon('fas', 'check',)
+            -#       = "復習済"
+            -#       -# = message.likes_count
+            -#   - else
+            -#     = button_to message_likes_path(message), id: "like-button", remote: true do
+            -#       = icon('fas', 'exclamation-triangle')
+            -#       = "再復習"
+            -# - else
+            -#   = icon('fas', 'hand-peace')
+            -#   = message.likes_count
 -# - if user_signed_in?
 -# - if messages.like_user(current_user.id)
 -# = button_to messages_like_path(like, message_id: message.id), method: :delete, id: "like-button", remote: true do
