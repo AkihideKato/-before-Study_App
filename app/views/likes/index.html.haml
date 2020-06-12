@@ -9,7 +9,10 @@
 %body
   %header
     .header_form もどる
-    %link{:href => "https://fonts.googleapis.com/earlyaccess/kokoro.css", :rel => "stylesheet"}/
+    -# %link{:href => "https://fonts.googleapis.com/earlyaccess/kokoro.css", :rel => "stylesheet"}/
   .main{:href => "https://saruwakakun.com/"}
-    %canvas#can
-    %script{:src => "javascripts/main.js"}
+    %canvas#can{:height => "320", :width => "240"}
+    %script{:href => "main.js"}
+    
+-# %canvas#screen{:height => "320", :width => "240"}
+-# %script{:src => "js/shooting.js"}
