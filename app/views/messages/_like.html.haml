@@ -1,3 +1,13 @@
+- if user_signed_in?
+  - if Like.find_by(user_id: current_user.id, message_id: message.id)
+    = link_to "/messages/#{message.id}/likes", method: :delete, class: 'like-check', remote: true do
+      = icon('fas', 'check')
+      = "復習済"
+  - else
+    = link_to "/messages/#{message.id}/likes", method: :post, class: 'like-exclamation', remote: true do
+      = icon('fas', 'exclamation-triangle')
+      = "再復習"
+- else
 -# - if user_signed_in?
 -#   - if message.likes_user(current_user.id)
 -#     = button_to message_likes_path(message.likes_count, message_id: message.id), method: :delete, id: "like-button", remote: true do
@@ -11,15 +21,4 @@
 -# - else
 -#   = icon('fas', 'hand-peace')
   -# = message.likes_count
-
-
-- if Like.find_by(user_id: current_user.id, message_id: message.id)
-  = link_to "/messages/#{message.id}/likes", method: :delete,remote: true do
-    = icon('fas', 'check',)
-
-- else
-  = link_to "/messages/#{message.id}/likes", method: :post, remote: true do
-    = icon('fas', 'exclamation-triangle')
-
   -# = message.likes.length
-

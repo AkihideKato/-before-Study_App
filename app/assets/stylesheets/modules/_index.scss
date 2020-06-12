@@ -7,6 +7,10 @@
   font-size: 20px;
   display: inline-block;
 }
+@mixin user-btn{
+  text-decoration: none;
+  padding: 0 15px;
+}
 
 .header{
   height: 50px;
@@ -21,7 +25,6 @@
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
   background-color: black;
   color: white;
-
   &-home{
     display: inline-block;
     @include icon-style;
@@ -44,90 +47,131 @@
     color: green;
     @include icon-link;
   }
-  &-left-user{
+  &-right-user{
     font-size: 20px;
     padding: 10px 0;
+    .post-name{
+      text-decoration: none;
+    }
     .post-logout{
       color: red;
-      text-decoration: none;
-      padding: 0 15px;
+      @include user-btn;
     }
     .post-new{
       color: lightblue;
-      text-decoration: none;
-      padding: 0 10px;
+      @include user-btn;
     }
     .post-login{
-      color: white;
-      text-decoration: none;
-      padding: 0 10px;
+      color: orange;
+      @include user-btn;
     }
   }
 }
-
 .message-top{
   height: 100%;
   width: 100%;
-  
+  padding-top: 75px;
   .message-infomation{
     margin-left: 40px;
     .message-form{
       height: 50px;
       width: 100%;
-      margin-right: 10px;
-      margin-left: 10px;
-      font-size: 35px;
+      // margin-right: 10px;
+      // margin-left: 10px;
+      font-size: 40px;
       font-family: Comic Sans MS;
       text-align: center;
-      color: blue;
       .message-header{
         display: flex;
+        // justify-content: start;
         font-family: Comic Sans MS;
         height: 40px;
-        width: 200px;
+        width: 300px;
         color: #5d627b;
         border-top: solid 5px #5d627b;
         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
-        margin-left: 10px;
-        
+        overflow: scroll;
         .message-created{
           font-size: 15px;
           color: silver;
           font-family: Comic Sans MS;
+          padding: 5px;
+          white-space: nowrap;
         }
         .message-title{
-          font-size: 15px;
-          padding-left: 50px;
+          font-size: 20px;
+          padding-left: 30px;
           font-family: Comic Sans MS;
           margin-bottom: 40px;
         }
       }
+      .message-header-right{
+        height: 7px;
+        width: 200px;
+        // background-color: red;
+      }
       .message-text{
-        height: 500px;
-        width: 750px;
+        height: 400px;
+        width: 650px;
         font-size: 25px;
         font-family: Comic Sans MS;
-        margin: 30px 0;
-        margin-bottom: 40px;
+        // margin: 20px 0;
+        // margin-bottom: 40px;
+        overflow: scroll;
         transition: all 0.8s;
-        transition-duration: 0.5s; /*変化の時間*/
+        transition-duration: 0.5s;
         box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
         border-radius: 10px 10px;
-        color: #232323;
         border-left: solid 10px gray;
         border-right: solid 10px gray;
+        color: #232323;
         background-color: #DDDDDD;
-
       }
-      .message-naem{
-        
-        
+      .message-like{
+        display: flex;
+        padding: 15px 15px;
+        // font-size: 20px;
+        // padding: 0.5em 1em;
+        // padding-bottom: 10px;
+        // margin-bottom: 10px;
+        // color: #2c2c2f;
+        // background: black;/*背景色*/
+        // border-radius: 10px 10px;
+
+        // padding-top: 10px;
+        .like-check{
+          height: 30px;
+          width: 75px;
+          font-size: 15px;
+          color: white;
+          text-decoration: none;
+          border-radius: 10px 10px;
+          background-color: #00BFFF;
+          text-align: center;
+
+        }
+        .like-exclamation{
+          height: 30px;
+          width: 75px;
+          font-size: 15px;
+          color: white;
+          text-decoration: none;
+          border-radius: 10px 10px;
+          background-color: #FF4F50;
+
+        }
+      }
+      .message-edit{
+        color: green;
+        text-decoration: none;
+      }
+      .message-name{
+        // font-size: 10px;
       }
     .message-side{
       height: 175px;
       width: 175px;
       position: fixed;
-      margin-top: 40px;
       margin-left: 70%;
       padding-top: 20px;
       font-size: 15px;

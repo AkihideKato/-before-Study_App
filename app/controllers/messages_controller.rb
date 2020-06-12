@@ -11,6 +11,17 @@ class MessagesController < ApplicationController
     redirect_to root_path, notice: 'メッセージを投稿しました'
   end
 
+  def edit
+    @message = Message.find(params[:id])
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    @message.update(message_params)
+    redirect_to root_path(@message), notice: 'メッセージを編集しました'
+  end
+
+
   private
   def message_params
     params.require(:message).permit(:title, :image, :text)

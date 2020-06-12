@@ -2,7 +2,6 @@
   .message-main
     .message-infomation
       .message-form
-        = "Top Page"
         .message-side
           .side-title
             = "今日の天気"
@@ -24,13 +23,19 @@
               = message.created_at.strftime("%m月%d")
             .message-title
               = message.title
-          .message-text
-            = message.text.html_safe
+          .message-header-right
+            .message-like
+              = render partial: "like", locals: { message: message }
+              = link_to "編集", edit_message_path(message.id), class: 'message-edit'
             .message-name
               - if user_signed_in?
-                = current_user.name
-                .message-like
-                  = render partial: "like", locals: { message: message }
+          .message-text
+            = message.text.html_safe
+              -# = current_user.name
+                
+
+
+
                  
 
               -#   - if message.like_user(current_user.id)

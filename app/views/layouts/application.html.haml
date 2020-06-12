@@ -31,10 +31,10 @@
           
         -# = link_to "マイページ", "/messages/#{current_user.id}"
       .header-top
-        .header-left-user
+        .header-right-user
           - if user_signed_in?
-            = "name:"
-            = link_to "#{current_user.name}さん", edit_user_registration_path(current_user.id)
+            = "name"
+            = link_to "#{current_user.name}さん", edit_user_registration_path(current_user.id), class: 'post-name'
             = link_to  "/users/sign_out", method: :delete, class: 'post-logout' do
               = icon('fas', 'sign-out-alt', "ログアウト")
           - else
