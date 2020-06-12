@@ -27,7 +27,8 @@
             .message-like
               - if user_signed_in?
                 = render partial: "like", locals: { message: message }
-                = link_to "編集", edit_message_path(message.id), class: 'message-edit',data: { confirm: "編集しますか？"}
+                = link_to "編集", edit_message_path(message.id), class: 'message-edit'
+                = link_to '削除', message_path(message.id), method: :delete,class: 'message-edit', data: { confirm: "削除しますか？"}
             .message-name
               - if user_signed_in?
           .message-text
