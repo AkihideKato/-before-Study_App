@@ -1,302 +1,323 @@
-
-
-
-
-
-
-const DEBUG = true;
-
-// game_speed(ms)
-const GAME_SPEED = 1000/150;
-
-// 画面サイズ
-const SCREEN_W = 1420;
-const SCREEN_H = 780;
-
-// キャンバスサイズ
-const CANVAS_W = SCREEN_W ;
-const CANVAS_H = SCREEN_H ;
-
-// フィールドサイズ
-const FIELD_W = SCREEN_W ;
-const FIELD_H = SCREEN_H ;
-
-// 星の数
-const STAR_MAX = 300;
-
-
-
-
-// キャンバス
-let can = document.getElementById("can");
-let con = can.getContext("2d");
-can.width = CANVAS_W;
-can.height = CANVAS_H;
-
-// フィールド
-let vcan = document.createElement("canvas");
-let vcon = vcan.getContext("2d");
-vcan.width = FIELD_W;
-vcan.height = FIELD_H;
-
-// カメラの座標
-let camera_x = 0;
-let camera_y = 0;
-
-// 星の実体
-let star = [];
-
-let tama=[];
-
-
-
-
-
-
-
-
-// 自機のクラス
-  class Jiki{
-	constructor(){
-		this.x = (FIELD_W/2)<<8;
-		this.y = (FIELD_H/2)<<8;
-    this.speed = 812;
-    this.anime = 0;
-    this.reload = 0;
-	 }
-  update(){
-    if(key[32] && this.reload == 0){
-      tama.push( new Tama(this.x,this.y,  0,-2000 ) );
-      this.reload = 30;
-    }
-    if(this.reload>0) this.reload--;
-		if( key[37] && this.x>this.speed )
-		{
-			this.x-=this.speed;
-			if(this.anime>-8 )this.anime--;
-		}
-		else if( key[39] && this.x<= (FIELD_W<<8)-this.speed )
-		{
-			this.x+=this.speed;
-			if(this.anime<8  )this.anime++;
-		}
-		else
-		{
-			if(this.anime>0) this.anime--;
-			if(this.anime<0) this.anime++;
-		}
-
-		if( key[38] && this.y>this.speed )
-			this.y-=this.speed;
-
-		if( key[40] && this.y<= (FIELD_H<<8)-this.speed)
-			this.y+=this.speed;
-	}
-
-
-
-
-
-
-
-
-//描画
-  draw()
-  {
-    drawSprite(2 + (this.anime>>2), this.x, this.y );
-  }
-}
-  let jiki = new Jiki();
-
-// 読み込み
-  let spriteImage = new Image();
-  spriteImage.src = "sprite.png";
-
-  class Sprite{
-
-    constructor(x,y , w,h){
-      this.x = x;
-      this.y = y;
-      this.w = w;
-      this.h = h;
-    }
-  }
-
-
-
-
-
-
-
-let sprite = [
-  new Sprite (1,1,100,100),//0
-  new Sprite (1,1,100,100),//1
-  new Sprite (1,1,100,100),//2
-  new Sprite (1,1,100,100),//3
-  new Sprite (1,1,100,100),//4
-
-  new Sprite (3,3,20,20),//4
-  new Sprite (10,10,200,200),//6
-];
-
-
-
-
-
-
-
-
-// 飛行機をを描写
-function drawSprite( snum, x, y ){
-	let sx = sprite[snum].x;
-	let sy = sprite[snum].y;
-	let sw = sprite[snum].w;
-	let sh = sprite[snum].h;
-
-	let px = (x>>8) - sw/2;
-	let py = (y>>8) - sh/2;
-
-  if( px+sw/2 < camera_x || px-sw/2>=camera_x + SCREEN_W ||
-      py+sh/2 < camera_y || py-sh/2>=camera_y + SCREEN_H)return;
-
-	vcon.drawImage( spriteImage,sx,sy,sw,sh,px,py,sw,sh);
-}
-
-
-
-
-
-
-
-
-// 整数のランダムを生成
-function rand(min,max){
-  return Math.floor( Math.random() * ( max-min+1) )+min;
-}
-
-  // 星クラス
-  class Star{
-    constructor(){
-      this.x = rand(0,FIELD_W) << 8;
-      this.y = rand(0,FIELD_H) <<8;
-      this.vx = 0;
-      this.vy = rand(400,700);
-      this.sz = rand(3,3);
-    }
-    draw(){
-      let x = this.x >> 8;
-      let y = this.y >> 8;
-
-      if( x < camera_x || x>=camera_x + SCREEN_W ||
-          y < camera_y || y>=camera_y + SCREEN_H)return;
-      vcon.fillStyle = rand(0,0)!=0? "99":"blue";
-      vcon.fillRect(x,y,this.sz,this.sz);
-    }
-    update(){
-      this.x += this.vx;
-      this.y += this.vy;
-      if( this.y > FIELD_H<<8){
-        this.y = 0;
-        this.x = rand(0,FIELD_W)<<8;
-      }
-    }
-  }
-
-
-
-
-  let key=[];
-
-  //キーボードが押されたとき
-  document.onkeydown = function(e){
-	   key[ e.keyCode ] = true;
-  }
-  //キーボードが離されたとき
-  document.onkeyup = function(e){
-	   key[ e.keyCode ] = false;
-  }
-
-
-
-
-
-  // 弾クラス
-  class Tama{
-  	constructor( x,y, vx,vy ){
-  		this.sn   = 5;
-  		this.x    = x;
-  		this.y    = y;
-  		this.vx   = vx;
-  		this.vy   = vy;
-      this.kill = false;
-  	}
-
-  	update(){
-  		this.x += this.vx;
-  		this.y += this.vy;
-      if(this.x<0 || this.x>FIELD_W<<8
-      || this.y<0 || this.y>FIELD_H<<8)this.kill = true;
-  	}
-
-  	draw(){
-  		drawSprite( this.sn, this.x , this.y );
-  	}
-  }
-
-
-
-
-
-
-// game初期化
-function gameInit(){
-  for(let i=0;i<STAR_MAX;i++)star[i] = new Star();
-  setInterval( gameLoop , GAME_SPEED);
-}
-
-
-
-// ゲームループ
-function gameLoop(){
-
-  //移動の処理
-  for(let i=0;i<STAR_MAX;i++)star[i].update();
-  for(let i=tama.length-1;i>=0;i--){
-
-  tama[i].update();
-  if(tama[i].kill)tama.splice( i,1);
-  }
-  jiki.update();
-
-
-  //描画の処理
-  vcon.fillStyle="black";
-  vcon.fillRect(camera_x,camera_y,SCREEN_W,SCREEN_H);
-
-  for(let i=0;i<STAR_MAX;i++)star[i].draw();
-  for(let i=0;i<tama.length;i++)tama[i].draw();
-
-  jiki.draw();
-
-
-  // 自機の範囲 0 ～ FIELD_W
-  // カメラの範囲 0 ～ (FIELD_W-SCREEN_W)
-  camera_x = (jiki.x>>8)/FIELD_W * (FIELD_W-SCREEN_W);
-  camera_y = (jiki.y>>8)/FIELD_H * (FIELD_H-SCREEN_H);
-
-
-  //仮想画面から実際のキャンバスにコピー
-  con.drawImage( vcan ,camera_x,camera_y,SCREEN_W,SCREEN_H,
-  	0,0,CANVAS_W,CANVAS_H);
-    if(DEBUG){
-      con.font = "40px 'Impact'";
-      con.fillStyle = "#008BBB	";
-      con.fillText("point :   " +tama.length,20,750);
-    }
-
-}
-
-  // オンロードでgame開始
-  window.onload = function(){
-    gameInit();
-  }
+// var Alien = function (aType, aLine, aCol) {
+//   this.type = aType;
+//   this.points = 40 - 10 * aType;
+//   this.line = aLine;
+//   this.column = aCol;
+//   this.alive = true;
+//   this.height = 20;
+//   this.width = 28;
+//   this.positionX = 100 + this.width * this.column;
+//   this.positionY = 100 + 30 * this.line;
+//   this.direction = 1;
+//   this.state = 0;
+
+//   this.changeState = function () { //change the state (2 different images for each alien)
+//       this.state = !this.state ? 20 : 0;
+//   };
+
+//   this.down = function () { //down the alien after changing direction
+//       this.positionY = this.positionY + 10;
+
+//   };
+
+//   this.move = function () { //set new position after moving and draw the alien
+//       if (this.positionY >= Game.height - 50) {
+//           Game.over();
+//       }
+//       this.positionX = this.positionX + 5 * Game.direction;
+//       this.changeState();
+//       if (this.alive) this.draw();
+//   };
+
+//   this.checkCollision = function () { //Check if the alien is killed by gun ray
+//       if (Gun.ray.active == true && this.alive == true) {
+//           if ((Gun.ray.positionX >= this.positionX && Gun.ray.positionX <= (this.positionX + this.width)) && (Gun.ray.positionY >= this.positionY && Gun.ray.positionY <= (this.positionY + this.height))) {
+//               this.kill();
+//               Gun.ray.destroy();
+//           }
+//       }
+//   };
+
+//   this.draw = function () { //draw the alien to his new position
+//       if (this.alive) { //draw the alien
+//           canvas.drawImage(
+//           pic,
+//           this.width * (this.type - 1),
+//           this.state,
+//           this.width,
+//           this.height,
+//           this.positionX,
+//           this.positionY,
+//           this.width,
+//           this.height);
+//       } else if (this.alive == null) { //draw the explosion
+//           canvas.drawImage(
+//           pic,
+//           85,
+//           20,
+//           28,
+//           20,
+//           this.positionX,
+//           this.positionY,
+//           this.width,
+//           this.height);
+//           this.alive = false; //alien won't be displayed any more
+//       }
+//   };
+
+//   this.kill = function () { //kill the alien
+//       this.alive = null;
+//       canvas.clearRect(this.positionX, this.positionY, this.width, this.height);
+//       Game.refreshScore(this.points);
+//   }
+// };
+
+// Gun = {
+//   position: 320,
+//   toleft: false,
+//   toright: false,
+
+//   init: function () { //initialize the gun and his move
+//       this.draw();
+//       this.toLeft();
+//       this.toRight();
+//       setInterval("Gun.toLeft()", 10);
+//       setInterval("Gun.toRight()", 10);
+//   },
+
+//   draw: function () { //draws the gun
+//       canvas.drawImage(pic, 85, 0, 28, 20, this.position, 470, 28, 20);
+//   },
+
+//   fire: function () { //shot
+//       this.ray.create();
+//   },
+
+//   toLeft: function () { //moves the gun to left
+//       if (this.toleft) {
+//           if (this.position - 5 > 0) {
+//               canvas.clearRect(0, 472, Game.width, 28);
+//               this.position -= 5;
+//               this.draw();
+//           }
+//       }
+//   },
+
+//   toRight: function () { //moves the gun to right
+//       if (this.toright) {
+//           if (this.position + 30 < Game.width) {
+//               canvas.clearRect(0, 472, Game.width, 28);
+//               this.position += 5;
+//               this.draw();
+//           }
+//       }
+//   },
+
+//   ray: { //gun ray
+//       positionX: 0,
+//       positionY: 465,
+//       length: 5,
+//       speed: 15,
+//       animation: null,
+//       active: false,
+//       create: function () { //created the ray if it does not exist
+//           if (!this.active) {
+//               this.positionX = Gun.position + 14;
+//               this.active = true;
+//               this.animation = setInterval("Gun.ray.animate()", this.speed);
+//           }
+
+//       },
+//       animate: function () { //animate the ray
+//           this.positionY -= this.length;
+//           if (this.positionY <= 5) this.destroy();
+//           else {
+//               Game.drawAliens();
+//               this.draw();
+//           }
+//       },
+//       draw: function () { //draw the ray and check collision with aliens
+//           if (this.active) {
+//               canvas.beginPath();
+//               canvas.strokeStyle = 'white';
+//               canvas.lineWidth = 2;
+//               canvas.moveTo(this.positionX, this.positionY);
+//               canvas.lineTo(this.positionX, this.positionY + this.length);
+//               canvas.stroke();
+
+//               for (i = 0; i < 5; i++) {
+//                   for (j = 0; j < 11; j++) {
+//                       Game.aliens[i][j].checkCollision();
+//                   }
+//               }
+//           }
+//       },
+//       destroy: function () { //destroy the ray
+//           this.positionY = 465;
+//           this.active = false;
+//           clearInterval(this.animation);
+//           this.animation = null;
+//           Game.drawAliens();
+//       },
+//   }
+
+// };
+
+// Game = {
+//   types: [1, 2, 2, 3, 3], //define kinds of aliens
+//   aliens: [
+//       [11],
+//       [11],
+//       [11],
+//       [11],
+//       [11]
+//   ],
+//   height: 0,
+//   width: 0,
+//   interval: 0,
+//   intervalDefault: 1000,
+//   direction: 1,
+//   animation: null,
+//   alives: 1,
+//   score: 0,
+//   level: 1,
+
+//   init: function (aWidth, aHeight) { //initialize default position and behaviour
+//       for (i = 0; i < 5; i++) {
+//           for (j = 0; j < 11; j++) {
+//               this.aliens[i][j] = new Alien(this.types[i], i, j);
+//               this.alives++;
+//               this.aliens[i][j].draw();
+//           }
+//       }
+//       this.width = aWidth;
+//       this.height = aHeight;
+//       this.play();
+//       Gun.init();
+//       this.refreshScore(0);
+//       document.getElementById('level').innerHTML = this.level;
+//       document.getElementById('inter').innerHTML = this.interval;
+//   },
+
+//   changeDirection: function () { //change the direction (left or right)
+//       if (this.direction == 1) {
+//           this.direction = -1;
+//       } else {
+//           this.direction = 1;
+//       }
+//   },
+//   clearCanvas: function () { //clear the canvas (but not the gun)
+//       canvas.clearRect(0, 0, this.width, this.height - 28);
+//   },
+//   closeToLeft: function () { //check if the aliens reach the left border
+//       return (this.aliens[0][0].positionX - 10 < 0) ? true : false;
+//   },
+//   closeToRight: function () { //check if the aliens reach the right border
+//       return (this.aliens[4][10].positionX + 35 > this.width) ? true : false;
+//   },
+//   drawAliens: function () { //draw the aliens
+//       this.clearCanvas();
+//       for (i = 0; i < 5; i++) {
+//           for (j = 0; j < 11; j++) {
+//               this.aliens[i][j].draw();
+//           }
+//       }
+//   },
+//   animate: function () { //move the aliens
+//       this.clearCanvas();
+//       Gun.ray.draw();
+//       this.checkAliens();
+//       for (i = 0; i < 5; i++) {
+//           for (j = 0; j < 11; j++) {
+//               this.aliens[i][j].move();
+//           }
+//       }
+//       if (this.closeToLeft() || this.closeToRight()) {
+//           this.changeDirection();
+//           for (i = 0; i < 5; i++) {
+//               for (j = 0; j < 11; j++) {
+//                   this.aliens[i][j].down();
+//               }
+//           }
+//           this.increaseSpeed();
+//       }
+//   },
+//   play: function () { //play the game
+//       this.interval = this.intervalDefault;
+//       this.interval = this.interval - (this.level * 20);
+//       this.animation = setInterval("Game.animate()", this.interval);
+//   },
+//   increaseSpeed: function (newInterval) { //increase the speed
+//       clearInterval(this.animation);
+//       if (newInterval === undefined) this.interval = this.interval - 10;
+//       else this.interval = newInterval;
+
+//       this.animation = setInterval("Game.animate()", this.interval);
+//       document.getElementById('inter').innerHTML = this.interval;
+//   },
+//   onkeydown: function (ev) { //key down event
+//       if (ev.keyCode == 37) Gun.toleft = true;
+//       else if (ev.keyCode == 39) Gun.toright = true;
+//       else if (ev.keyCode == 32) Gun.fire();
+//       else return;
+//   },
+//   onkeyup: function (ev) { //key up event
+//       if (ev.keyCode == 37) Gun.toleft = false;
+//       else if (ev.keyCode == 39) Gun.toright = false;
+//       else return;
+//   },
+//   over: function () { //ends the game
+//       clearInterval(this.animation);
+//       canvas.clearRect(0, 0, this.width, this.height);
+//       canvas.font = "40pt Calibri,Geneva,Arial";
+//       canvas.strokeStyle = "rgb(FF,0,0)";
+//       canvas.fillStyle = "rgb(0,20,180)";
+//       canvas.strokeText("Game Over", this.width / 2 - 150, this.height / 2 - 10);
+//   },
+//   checkAliens: function () { //check number of aliens
+//       if (this.alives == 0) this.nextLevel();
+//       else if (this.alives == 1) this.increaseSpeed(150 - (this.level * 10));
+//       else if (this.alives <= 10) this.increaseSpeed(200 - (this.level * 10));
+//       else if (this.alives <= 10) this.increaseSpeed(300 - (this.level * 10));
+//       else if (this.alives <= 25) this.increaseSpeed(500 - (this.level * 10));
+//   },
+//   refreshScore: function (points) { //display the score
+//       this.alives--;
+//       this.score += points;
+//       document.getElementById('score').innerHTML = this.score;
+//       document.getElementById('alives').innerHTML = this.alives;
+//   },
+//   nextLevel: function () {
+//       //resurect aliens
+//       for (i = 0; i < 5; i++) {
+//           for (j = 0; j < 11; j++) {
+//               this.aliens[i][j].alive = true;
+//               this.alives++;
+//           }
+//       }
+//       clearInterval(this.animation);
+//       this.level++;
+//       document.getElementById('level').innerHTML = this.level;
+//       this.play();
+//       this.increaseSpeed(this.interval);
+//       document.getElementById('inter').innerHTML = this.interval;
+//   }
+// };
+
+// //define the global context of the game
+// var element = document.getElementById('aliensCanvas');
+// if (element.getContext) {
+//   var canvas = element.getContext('2d');
+
+//   var pic = new Image();
+//   pic.src = 'https://github.com/gregquat/inbeda/raw/master/sprite.png';
+
+//   Game.init(530, 500);
+
+//   document.body.onkeydown = function (ev) {
+//       Game.onkeydown(ev);
+//   };
+//   document.body.onkeyup = function (ev) {
+//       Game.onkeyup(ev);
+//   };
+// }

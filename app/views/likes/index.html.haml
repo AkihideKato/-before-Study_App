@@ -1,18 +1,16 @@
-%head
-  -# %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  -# %meta{:charset => "utf-8"}/
-  %link{:href => "style.css"}/
-  %link{:href => "reset.css",}/
-  :css
-
-  %title shooting
-%body
-  %header
-    .header_form もどる
-    -# %link{:href => "https://fonts.googleapis.com/earlyaccess/kokoro.css", :rel => "stylesheet"}/
-  .main{:href => "https://saruwakakun.com/"}
-    %canvas#can{:height => "320", :width => "240"}
-    %script{:href => "main.js"}
-    
--# %canvas#screen{:height => "320", :width => "240"}
--# %script{:src => "js/shooting.js"}
+%link{:href => "style.css", :rel => "stylesheet", :type => "text/css"}/
+%h1
+  Inbeda, the amazing javascript Space Invaders | Interval :
+  %span#inter
+  ms
+#levelDiv
+  %h2 Level :
+  %span#level
+#scoreDiv
+  %h2 Score :
+  %span#score
+#alivesDiv
+  %h2 Aliens :
+  %span#alives
+%canvas#aliensCanvas.mesCanvas{:height => "500", :width => "530"} Votre navigateur ne supporte pas les Canvas :(
+%script{:src => "main.js"}
