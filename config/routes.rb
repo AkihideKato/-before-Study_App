@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   root to: "messages#index"
   resources :users, only: [:edit, :update]
+  resources :likes, only: [:index]
   
   post '/messages/:message_id/likes' => "likes#create"
   delete '/messages/:message_id/likes' => "likes#destroy"

@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
     @message.update(message_params)
-    redirect_to root_path(@message)
+    redirect_to root_path(@message), notice: 'メッセージを編集しました'
   end
 
   def destroy

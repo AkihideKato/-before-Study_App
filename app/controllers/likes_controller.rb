@@ -1,6 +1,10 @@
 class LikesController < ApplicationController
  
-  before_action :set_like
+  before_action :set_like, except: :index
+
+
+  def index
+  end
 
   def create
     @like = Like.create(user_id: current_user.id, message_id: @message.id)
