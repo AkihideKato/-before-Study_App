@@ -13,11 +13,16 @@
       .header-top
         .header-left
           .foo
-          %span.letter{"data-letter" => "Study App"} Study App
-          = link_to "/messages", class: "header-home" do
-            = icon('fas', 'home')
-          = link_to "/messages/new", class: "header-pen" do
-            = icon('fas', 'pen')
+            - if user_signed_in?
+              %span.letter{"data-letter" => "Study App"} Study App
+              = link_to "/messages", class: "header-home" do
+                = icon('fas', 'home')
+              = link_to "/messages/new", class: "header-pen" do
+                = icon('fas', 'pen')
+            - else
+              %span.letter{"data-letter" => "Study App"} Study App
+              = link_to "/messages", class: "header-home" do
+                = icon('fas', 'home')
 
       -# - if user_signed_in?
       -#   = current_user.name

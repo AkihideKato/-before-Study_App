@@ -1,40 +1,45 @@
-.message
-  .message-main
-    .message-form
+- if user_signed_in?
+  .message
+    .message-main
+      -# .message-form
       .message-side
-        .side-title
-          = "今日の天気"
+        .side-search
+          = form_with(url: search_messages_path, local: true, method: :get) do |form|
+            = form.text_field :keyword, placeholder: "投稿を検索", class: 'search-field'
+            = form.submit "検索"
+        .side-weather
+          = "今日の天気:"
           #weather.bold
           #weatherMark.bold
           #icon
-            気温
-            %span#temp.bold>
-            ℃
-            %br/
-            降水確率
-            %span#humidity.bold>
-            ％
-      - @messages.each do |message|
-        .message-header
-          .message-created
-            = message.created_at.strftime("%m月%d")
-          .message-title
-            = message.title
-        .message-header-left
-          .message-like
-            - if user_signed_in?
+          気温
+          %span#temp.bold>
+          ℃
+          %br/
+          降水確率
+          %span#humidity.bold>
+          ％
+      .message-form
+        - @messages.each do |message|
+          .message-header
+            .message-created
+              = message.created_at.strftime("%m月%d")
+            .message-title
+              = message.title
+          .message-header-left
+            .message-like
+              -# - if user_signed_in?
               = render partial: "like", locals: { message: message }
-          .message-action
-            .btn-open
-              = link_to "編集", edit_message_path(message.id), class: 'message-edit'
-            .btn-open
-              = link_to '詳細', "/messages/#{message.id}", method: :get, class: 'message-show'
-            .btn-open
-              = link_to '削除', message_path(message.id), method: :delete, class: 'message-delete', data: { confirm: "削除しますか？"}
-          .message-name
-            - if user_signed_in?
-        .message-text
-          = message.text.html_safe
+            .message-action
+              .btn-open
+                = link_to "編集", edit_message_path(message.id), class: 'message-edit'
+              .btn-open
+                = link_to '詳細', "/messages/#{message.id}", method: :get, class: 'message-show'
+              .btn-open
+                = link_to '削除', message_path(message.id), method: :delete, class: 'message-delete', data: { confirm: "削除しますか？"}
+            .message-name
+          .message-text
+            = message.text.html_safe
 
             -# = current_user.name
             -#   - if message.like_user(current_user.id)

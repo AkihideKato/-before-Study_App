@@ -7,8 +7,12 @@ class MessagesController < ApplicationController
   end
   
   def create
-    Message.create(message_params)
-    redirect_to root_path, notice: 'メッセージを投稿しました'
+    @message = Message.new(message_params)
+    if @message.save
+      redirect_to root_path, notice: 'メッセージを投稿しました'
+    else
+      redirect_to new_message_path, notice: '空欄を記入してください'
+    end
   end
 
   def show
@@ -29,6 +33,10 @@ class MessagesController < ApplicationController
     message = Message.find(params[:id])
     message.destroy
     redirect_to root_path(@messge), notice: 'メッセージを削除しました'
+  end
+
+  def search
+    @messages = Message.search(params[:keyword])
   end
 
   private

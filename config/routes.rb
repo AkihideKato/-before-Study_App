@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :messages do
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
   root to: "messages#index"
   resources :users, only: [:edit, :update]
