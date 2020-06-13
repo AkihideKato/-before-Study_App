@@ -1,3 +1,4 @@
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -15,7 +16,9 @@ module StudyApp
     I18n.enforce_available_locales = false
     I18n.config.available_locales = :ja
     I18n.default_locale = :ja
-    
+
+    # config.assets.precompile << %w( *.scss *.js )
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

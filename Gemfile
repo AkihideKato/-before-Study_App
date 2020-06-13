@@ -63,7 +63,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "haml-rails"
 gem "font-awesome-sass"
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+gem 'font-awesome-rails', '~> 4.5'
 gem 'awesome_print', '~> 1.8'
 gem 'jquery-rails'
 gem 'bootstrap'
