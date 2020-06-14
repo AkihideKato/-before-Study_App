@@ -16,7 +16,7 @@
 3. top画面にて反映
 <img width="1432" alt="top" src="https://user-images.githubusercontent.com/64053129/84590247-d49ec800-ae6f-11ea-8bae-66facb6142fb.png">
 
-4. 画面左上の検索により、検索結果を表示 検索例) Rails
+4. 画面左上の検索により、検索結果を表示 検索例) モデル
 <img width="1426" alt="search" src="https://user-images.githubusercontent.com/64053129/84590269-16c80980-ae70-11ea-8d13-c8a5fe62992b.png">
 
 ## 工夫点
