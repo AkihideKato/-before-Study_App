@@ -83,3 +83,6 @@ production:
   database: Study_App_production
   username: Study_App
   password: <%= ENV['STUDY_APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
