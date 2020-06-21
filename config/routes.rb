@@ -18,5 +18,4 @@ Rails.application.routes.draw do
     patch 'user_update', to: 'users/registrations#user_update', as: 'user_update'
   end
 
-  
 end
