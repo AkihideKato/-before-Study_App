@@ -13,4 +13,4 @@ $(function(){
   }, function(){
       $(this).animate(mouse_off, 50);
   });
-});
+}); 
